@@ -135,7 +135,7 @@ describe("funcion de selector $ ", function() {
 
 });
 
-describe("Credito Extra", function () {
+xdescribe("Credito Extra", function () {
   describe("Selector de Jerarquía", function (){
     it("debe seleccionar los elementos correctos cuando el selector incluye a un child combinator (>)", function () {
         elements = $('div > img');

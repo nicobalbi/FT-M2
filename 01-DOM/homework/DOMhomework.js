@@ -16,9 +16,9 @@ document.querySelector('#createdBy').innerHTML += ' Nico'
 // 2) 'complete'    : debe setearse en false
 // Ayuda: usar 'this' en el constructor
 
-function ToDo (desc) {
+function ToDo (description) {
   // Tu código acá:
-  this.description = desc
+  this.description = description
   this.complete = false
 }
 
@@ -52,13 +52,23 @@ ToDo.prototype.completeToDo = function() { this.complete = true }
 function buildToDo(toDo, index) {
   // Tu código acá:
   let toDoShell = document.createElement('div')
-  toDoShell.className = 'toDoShell'
+  toDoShell.className = 'toDoShell'     // || toDoShell.classList.add('toDoShell') || toDoShell.setAttribute('class', 'toDoShell')      
   let toDoText = document.createElement('span')
   toDoText.innerHTML = toDo.description
-  toDoText.id = index
-  if (toDo.complete) toDoText.className = 'completeText'
-  toDoText.addEventListener('click', completeToDo) 
+  // toDoText.id = index
+  if (toDo.complete) toDoText.className = 'completeText'    //  || toDoText.className = toDo.complete ? 'completeText' : '' 
+  // toDoText.addEventListener('click', completeToDo) 
   toDoShell.appendChild(toDoText)
+
+  // Extra credit
+  let check = document.createElement('input')
+  check.type = 'checkbox'
+  check.id = index
+  check.addEventListener('click', completeToDo) 
+  check.className = 'completeCheckbox'
+  if (toDo.complete) check.checked = true
+  toDoShell.appendChild(check)
+
   return toDoShell
 }
 
@@ -88,7 +98,19 @@ function displayToDos() {
   toDoContainer.innerHTML = ''
   buildToDos(toDoItems).forEach((elem) => toDoContainer.appendChild(elem))
 }
+/*
+arr = [1,2,3,4]
+arr.forEach(cb)
 
+for => array[i] | i   |   appendChild(array[i])
+===
+forEach => elem | indice  |  appendChild(elem)
+
+arr.forEach(function (elem, indice, arrray) {
+
+})
+
+*/
 
 // La función 'addToDo' agregará un nuevo ToDo al array 'toDoItems'
 // [NOTA: Algunas cuestiones a tener en cuenta sobre el elemento 'input' de HTML (Ya que 'toDoInput' es un input)

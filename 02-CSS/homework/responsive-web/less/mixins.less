@@ -1,1 +1,19 @@
 // Mixins acá
+.flex(@direction) {
+    display: flex;
+    flex-direction: @direction;
+}
+
+.register(@bg, @width) {
+    background-color: @bg;
+    width: @width;
+    color: @wild-sand;
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 8px;
+
+    &:hover {
+        background-color: white;
+        color: @bg;
+    }
+}
